@@ -38,7 +38,7 @@
 
           <hr />
 
-          Or <router-link to="/log-in">click here</router-link> to log in!
+          Or <router-link to="/login">click here</router-link> to log in!
         </form>
       </div>
     </div>
@@ -87,7 +87,7 @@ export default {
               duration: 2000,
               position: "bottom-right",
             });
-            this.$router.push("/log-in");
+            this.$router.push("/login");
           })
           .catch((error) => {
             if (error.response) {
@@ -105,6 +105,9 @@ export default {
           });
       }
     },
+  },
+  mounted() {
+    document.title = "Sign Up | Djackets";
   },
 };
 </script>
