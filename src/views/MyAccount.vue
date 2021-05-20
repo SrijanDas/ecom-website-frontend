@@ -53,7 +53,7 @@ export default {
     async getMyOrders() {
       this.$store.commit("setIsLoading", true);
       await axios
-        .get("/api/v1/orders/")
+        .get("/orders/")
         .then((response) => {
           this.orders = response.data;
         })
