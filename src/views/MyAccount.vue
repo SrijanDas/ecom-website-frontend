@@ -2,7 +2,7 @@
   <div class="page-my-account">
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h1 class="title">My account</h1>
+        <h1 class="title">Hey, {{ username }}</h1>
       </div>
 
       <div class="column is-12">
@@ -12,7 +12,7 @@
       <hr />
 
       <div class="column is-12">
-        <h2 class="subtitle">My orders</h2>
+        <h2 class="subtitle">Your orders</h2>
 
         <OrderSummary
           v-for="order in orders"
@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       orders: [],
+      username: localStorage.getItem("username"),
     };
   },
   mounted() {
@@ -56,7 +57,6 @@ export default {
         .get("/orders/")
         .then((response) => {
           this.orders = response.data;
-          console.log(this.orders);
         })
         .catch((error) => {
           console.log(error);
