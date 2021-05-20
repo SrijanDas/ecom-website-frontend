@@ -56,6 +56,7 @@ export default {
         .get("/orders/")
         .then((response) => {
           this.orders = response.data;
+          console.log(this.orders);
         })
         .catch((error) => {
           console.log(error);
