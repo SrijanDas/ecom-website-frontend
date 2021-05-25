@@ -50,7 +50,37 @@
         </div>
 
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Summer</router-link>
+          <div class="dropdown navbar-item" v-bind:class="showDropdown">
+            <div class="dropdown-trigger">
+              <button
+                @click="toggleDropdown()"
+                class="button navbar-item is-dark"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu"
+              >
+                <span>Products</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <router-link to="/cloths" class="dropdown-item"
+                  >Cloths</router-link
+                >
+
+                <a href="#" class="dropdown-item"> Dropdown item </a>
+                <a class="dropdown-item"> Other dropdown item </a>
+                <a href="#" class="dropdown-item is-active">
+                  Active dropdown item
+                </a>
+                <a href="#" class="dropdown-item"> Other dropdown item </a>
+                <hr class="dropdown-divider" />
+                <a href="#" class="dropdown-item"> With a divider </a>
+              </div>
+            </div>
+          </div>
           <router-link to="/winter" class="navbar-item">Winter</router-link>
 
           <div class="navbar-item">
@@ -107,7 +137,19 @@ export default {
       cart: {
         items: [],
       },
+      dropdownActive: false,
+      showDropdown: "",
     };
+  },
+  methods: {
+    toggleDropdown() {
+      this.dropdownActive = !this.dropdownActive;
+      if (this.dropdownActive) {
+        this.showDropdown = "is-active";
+      } else {
+        this.showDropdown = "";
+      }
+    },
   },
   beforeCreate() {
     this.$store.commit("initializeStore");
