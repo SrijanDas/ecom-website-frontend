@@ -51,7 +51,7 @@ export default {
     };
   },
   mounted() {
-    document.title = "Log In | Djackets";
+    document.title = `Log In | ${this.$store.state.website_name}`;
   },
   methods: {
     async submitForm() {

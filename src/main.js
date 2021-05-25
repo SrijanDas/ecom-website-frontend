@@ -4,7 +4,7 @@ import router from "./router";
 import axios from "axios";
 import store from "./store";
 
-axios.defaults.baseURL = "http://localhost:8000/api/v1";
+axios.defaults.baseURL = "https://ecom-test-api.herokuapp.com/api/v1";
 
 createApp(App)
   .use(store)

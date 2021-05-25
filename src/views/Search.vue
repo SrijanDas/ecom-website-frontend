@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted() {
-    document.title = "Search | Djackets";
+    document.title = `Search | ${this.$store.state.website_name}`;
 
     let uri = window.location.search.substring(1);
     let params = new URLSearchParams(uri);

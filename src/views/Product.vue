@@ -56,7 +56,8 @@ export default {
         .get(`/products/${category_slug}/${product_slug}`)
         .then((res) => {
           this.product = res.data;
-          document.title = this.product.name + " | Djackets";
+          document.title =
+            this.product.name + ` | ${this.$store.state.website_name}`;
         })
         .catch((error) => {
           console.log(error);

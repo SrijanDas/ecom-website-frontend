@@ -3,7 +3,7 @@
     <nav class="navbar is-dark">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item"
-          ><strong>Djackets</strong></router-link
+          ><strong>{{ this.$store.state.website_name }}</strong></router-link
         >
 
         <a
@@ -89,7 +89,10 @@
     </section>
 
     <footer class="footer">
-      <p class="has-text-centered">Copyright (c) 2021</p>
+      <router-link to="/about">
+        <p class="has-text-centered">About</p>
+      </router-link>
+      <p class="has-text-centered">Copyright &copy 2021</p>
     </footer>
   </div>
 </template>

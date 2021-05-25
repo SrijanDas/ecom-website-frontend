@@ -2,9 +2,14 @@
   <div class="page-success">
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h1 class="title">Thank you</h1>
+        <h1 class="title">
+          Thank you
+          <span class="icon has-text-success">
+            <i class="fas fa-check-circle"></i>
+          </span>
+        </h1>
 
-        <p>Your order will be processed within 48 hours</p>
+        <p>Your order has been placed</p>
       </div>
     </div>
   </div>
@@ -13,8 +18,9 @@
 <script>
 export default {
   name: "Success",
+
   mounted() {
-    document.title = "Success | Djackets";
+    document.title = `Success | ${this.$store.state.website_name}`;
     if (localStorage.getItem("reloaded")) {
       // The page was just reloaded. Clear the value from local storage
       // so that it will reload the next time this page is visited.

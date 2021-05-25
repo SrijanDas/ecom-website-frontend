@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     this.getLatestProducts();
-    document.title = "Home | Djackets";
+    document.title = `Home | ${this.$store.state.website_name}`;
   },
   methods: {
     async getLatestProducts() {

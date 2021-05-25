@@ -63,6 +63,7 @@ export default {
   },
   mounted() {
     this.cart = this.$store.state.cart;
+    document.title = `Cart | ${this.$store.state.website_name}`;
   },
   methods: {
     removeFromCart(item) {

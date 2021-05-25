@@ -39,10 +39,47 @@
         </tr>
       </tbody>
     </table>
+    <button
+      v-if="canCancelOrder"
+      class="button is-light"
+      @click="openModal = 'is-active'"
+    >
+      Cancel Order
+    </button>
+
+    <div class="modal" v-bind:class="openModal">
+      <div v-on:click="openModal = ''" class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Cancel Order : {{ order.id }}</p>
+          <button
+            v-on:click="openModal = ''"
+            class="delete"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+          <div class="field">
+            <label class="label">Reason for cancellation</label>
+            <div class="control">
+              <textarea
+                v-model="reasonForCancellation"
+                class="textarea"
+                placeholder="Textarea"
+              ></textarea>
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button @click="cancelOrder(order.id)" class="button">Confirm</button>
+        </footer>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "OrderSummary",
   props: {
@@ -52,6 +89,9 @@ export default {
     return {
       statusClass: "has-text-warning",
       statusIcon: "fas fa-exclamation-triangle",
+      canCancelOrder: false,
+      openModal: "",
+      reasonForCancellation: "",
     };
   },
   methods: {
@@ -67,7 +107,8 @@ export default {
       let readableStatus = "";
       if (orderStatus === "YTD") {
         readableStatus = "Yet to dispatch";
-        this.statusClass = "has-text-primary";
+        this.canCancelOrder = true;
+        this.statusClass = "has-text-info";
         this.statusIcon = "fas fa-info-circle";
       } else if (orderStatus === "SHP") {
         readableStatus = "Shipped";
@@ -100,6 +141,30 @@ export default {
         statusClass = "In progress";
       }
       return statusClass;
+    },
+    async cancelOrder(orderId) {
+      const data = {
+        order_id: orderId,
+        reason: this.reasonForCancellation,
+      };
+      await axios
+        .post("/cancel-order/", data)
+        .then((res) => {
+          // console.log(res);
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+          this.openModal = "";
+          toast({
+            message: "Something went wrong! Please try again",
+            type: "is-danger",
+            dismissible: true,
+            pauseOnHover: true,
+            duration: 2000,
+            position: "bottom-right",
+          });
+        });
     },
   },
 };

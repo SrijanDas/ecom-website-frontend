@@ -32,6 +32,7 @@ export default {
   },
   mounted() {
     this.getCategory();
+    document.title = `${this.$route.params.category_slug} | ${this.$store.state.website_name}`;
   },
   watch: {
     $route(to, from) {

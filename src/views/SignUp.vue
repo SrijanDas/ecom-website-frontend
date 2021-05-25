@@ -107,7 +107,7 @@ export default {
     },
   },
   mounted() {
-    document.title = "Sign Up | Djackets";
+    document.title = `Sign Up | ${this.$store.state.website_name}`;
   },
 };
 </script>

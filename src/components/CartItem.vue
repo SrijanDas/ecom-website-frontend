@@ -15,8 +15,8 @@
       <div class="qtyContainer">
         {{ item.quantity }}
         <div class="btnContainer">
-          <a class="button is-small" @click="decrementQuantity(item)">-</a>
           <a class="button is-small" @click="incrementQuantity(item)">+</a>
+          <a class="button is-small" @click="decrementQuantity(item)">-</a>
         </div>
       </div>
     </td>

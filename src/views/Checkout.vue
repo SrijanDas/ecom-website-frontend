@@ -99,14 +99,16 @@
           <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
         </div>
 
-        <hr />
-
         <div id="card-element" class="mb-5"></div>
 
         <template v-if="cartTotalLength">
           <hr />
 
-          <button class="button is-dark" @click="submitForm">
+          <button
+            class="button is-dark"
+            v-bind:class="isloading"
+            @click="submitForm"
+          >
             Proceed to Pay
           </button>
         </template>
@@ -125,8 +127,6 @@ export default {
       cart: {
         items: [],
       },
-      stripe: {},
-      card: {},
       first_name: "",
       last_name: "",
       email: "",
@@ -135,19 +135,12 @@ export default {
       zipcode: "",
       place: "",
       errors: [],
+      isloading: "",
     };
   },
   mounted() {
-    document.title = "Checkout | Djackets";
+    document.title = `Checkout | ${this.$store.state.website_name}`;
     this.cart = this.$store.state.cart;
-    // if (this.cartTotalLength > 0) {
-    //   this.stripe = Stripe(
-    //     "pk_test_51H1HiuKBJV2qfWbD2gQe6aqanfw6Eyul5PO2KeOuSRlUMuaV4TxEtaQyzr9DbLITSZweL7XjK3p74swcGYrE2qEX00Hz7GmhMI"
-    //   );
-    //   const elements = this.stripe.elements();
-    //   this.card = elements.create("card", { hidePostalCode: true });
-    //   this.card.mount("#card-element");
-    // }
   },
   methods: {
     getItemTotal(item) {
@@ -182,7 +175,7 @@ export default {
     },
     async processOrder() {
       this.$store.commit("setIsLoading", true);
-
+      this.isloading = "is-loading";
       const items = [];
       for (let i = 0; i < this.cart.items.length; i++) {
         const item = this.cart.items[i];
