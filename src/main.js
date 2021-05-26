@@ -3,9 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import store from "./store";
-import "dotenv";
+import dotenv from "dotenv";
 
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
+dotenv.config();
+
+axios.defaults.baseURL = process.env.VUE_APP_API;
 
 createApp(App)
   .use(store)
