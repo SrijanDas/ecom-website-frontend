@@ -87,7 +87,6 @@
               </div>
             </div>
           </div>
-          <router-link to="/winter" class="navbar-item">Winter</router-link>
 
           <div class="navbar-item">
             <div class="buttons">

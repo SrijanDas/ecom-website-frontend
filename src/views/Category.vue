@@ -2,7 +2,7 @@
   <div class="page-category">
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2 class="is-size-2 has-text-centered">{{ category.name }}</h2>
+        <h2 class="is-size-2 has-text-centered">{{ category.name }}s</h2>
       </div>
 
       <ProductBox
@@ -32,7 +32,6 @@ export default {
   },
   mounted() {
     this.getCategory();
-    document.title = `${this.$route.params.category_slug} | ${this.$store.state.website_name}`;
   },
   watch: {
     $route(to, from) {
@@ -49,7 +48,8 @@ export default {
         .get(`/products/${categorySlug}/`)
         .then((response) => {
           this.category = response.data;
-          document.title = this.category.name + " | Djackets";
+          document.title =
+            this.category.name + ` | ${this.$store.state.website_name}`;
         })
         .catch((error) => {
           console.log(error);

@@ -8,7 +8,7 @@ export default createStore({
     isAuthenticated: false,
     token: "",
     isLoading: false,
-    website_name: "Vcart",
+    website_name: "Vkart",
   },
   mutations: {
     initializeStore(state) {
