@@ -14,7 +14,7 @@
           class="button is-dark mt-4"
           >View details</router-link
         >
-        <button @click="addToCart()" class="button mt-4 is-success ml-2">
+        <button @click="addToCart()" class="button is-success mt-4">
           <span class="icon"><i class="fas fa-shopping-cart"></i></span>
           <span>Add to Cart</span>
         </button>
@@ -66,5 +66,11 @@ export default {
   object-fit: contain;
   max-height: 150px;
   margin-top: 20px;
+}
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 </style>

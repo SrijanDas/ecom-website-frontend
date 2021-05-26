@@ -50,13 +50,16 @@
         </div>
 
         <div class="navbar-end">
-          <div class="dropdown navbar-item" v-bind:class="showDropdown">
+          <div
+            class="dropdown navbar-item"
+            v-bind:class="{ 'is-active': dropdownActive }"
+          >
             <div class="dropdown-trigger">
               <button
-                @click="toggleDropdown()"
                 class="button navbar-item is-dark"
                 aria-haspopup="true"
                 aria-controls="dropdown-menu"
+                @click="dropdownActive = !dropdownActive"
               >
                 <span>Products</span>
                 <span class="icon is-small">
@@ -66,18 +69,21 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-                <router-link to="/cloths" class="dropdown-item"
+                <router-link to="/book" class="dropdown-item"
+                  >Books</router-link
+                >
+                <router-link to="/cloth" class="dropdown-item"
                   >Cloths</router-link
                 >
-
-                <a href="#" class="dropdown-item"> Dropdown item </a>
-                <a class="dropdown-item"> Other dropdown item </a>
-                <a href="#" class="dropdown-item is-active">
-                  Active dropdown item
-                </a>
-                <a href="#" class="dropdown-item"> Other dropdown item </a>
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item"> With a divider </a>
+                <router-link to="/phone" class="dropdown-item"
+                  >Phone</router-link
+                >
+                <router-link to="/laptop" class="dropdown-item"
+                  >Laptop</router-link
+                >
+                <router-link to="/shoe" class="dropdown-item"
+                  >Shoes</router-link
+                >
               </div>
             </div>
           </div>
@@ -138,18 +144,10 @@ export default {
         items: [],
       },
       dropdownActive: false,
-      showDropdown: "",
     };
   },
   methods: {
-    toggleDropdown() {
-      this.dropdownActive = !this.dropdownActive;
-      if (this.dropdownActive) {
-        this.showDropdown = "is-active";
-      } else {
-        this.showDropdown = "";
-      }
-    },
+    // toggleDropdown() {},
   },
   beforeCreate() {
     this.$store.commit("initializeStore");
@@ -162,6 +160,15 @@ export default {
   },
   mounted() {
     this.cart = this.$store.state.cart;
+  },
+  watch: {
+    $route(to, from) {
+      if (to.path !== from.path) {
+        this.dropdownActive = false;
+      } else {
+        this.dropdownActive = false;
+      }
+    },
   },
   computed: {
     cartTotalLength() {
