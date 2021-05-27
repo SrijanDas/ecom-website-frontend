@@ -187,8 +187,8 @@ export default {
 
 .lds-dual-ring {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 .lds-dual-ring:after {
   content: " ";

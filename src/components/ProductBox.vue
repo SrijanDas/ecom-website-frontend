@@ -32,7 +32,18 @@ export default {
     product: Object,
   },
 
+  // data() {
+  //   return {
+  //     publicPath: process.env.BASE_URL,
+  //   };
+  // },
+
   methods: {
+    // getImg(url) {
+    //   let newUrl = String(url).split("/").slice(-1).pop();
+    //   console.log(newUrl);
+    //   return newUrl;
+    // },
     addToCart() {
       if (isNaN(this.quantity) || this.quantity < 1) {
         this.quantity = 1;
@@ -69,8 +80,8 @@ export default {
 }
 .btnContainer {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  /* flex-wrap: wrap; */
+  flex-flow: column wrap;
 }
 </style>

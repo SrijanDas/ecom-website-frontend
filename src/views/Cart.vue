@@ -38,7 +38,13 @@
 
         <hr />
 
-        <router-link to="/cart/checkout" class="button is-dark"
+        <router-link
+          v-if="this.$store.state.isAuthenticated"
+          to="/cart/checkout"
+          class="button is-dark"
+          >Proceed to checkout</router-link
+        >
+        <router-link v-else to="/login" class="button is-dark"
           >Proceed to checkout</router-link
         >
       </div>
