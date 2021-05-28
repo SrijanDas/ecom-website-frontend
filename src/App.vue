@@ -5,25 +5,7 @@
         <router-link to="/" class="navbar-item"
           ><strong>{{ this.$store.state.website_name }}</strong></router-link
         >
-
-        <a
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbar-menu"
-          @click="showMobileMenu = !showMobileMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div
-        class="navbar-menu"
-        id="navbar-menu"
-        v-bind:class="{ 'is-active': showMobileMenu }"
-      >
+        <!-- Search  -->
         <div class="navbar-start">
           <div class="navbar-item">
             <form method="get" action="/search">
@@ -49,6 +31,34 @@
           </div>
         </div>
 
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <router-link to="/cart" class="button is-success">
+              <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+              <span>Cart ({{ cartTotalLength }})</span>
+            </router-link>
+          </div>
+        </div>
+
+        <!-- mobile menu -->
+        <a
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbar-menu"
+          @click="showMobileMenu = !showMobileMenu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div
+        class="navbar-menu"
+        id="navbar-menu"
+        v-bind:class="{ 'is-active': showMobileMenu }"
+      >
         <div class="navbar-end">
           <div
             class="dropdown navbar-item"
@@ -101,11 +111,6 @@
                   >Log in</router-link
                 >
               </template>
-
-              <router-link to="/cart" class="button is-success">
-                <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-                <span>Cart ({{ cartTotalLength }})</span>
-              </router-link>
             </div>
           </div>
         </div>
