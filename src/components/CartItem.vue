@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr class="tableRow">
     <td>
       <router-link :to="item.product.get_absolute_url">
         <div class="product">
@@ -63,6 +63,8 @@ export default {
 </script>
 
 <style scoped>
+.tableRow {
+}
 .product {
   display: flex;
   align-items: center;

@@ -5,29 +5,30 @@
         <h1 class="title">Cart</h1>
       </div>
 
-      <div class="column is-12 box">
-        <table class="table is-fullwidth" v-if="cartTotalLength">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th></th>
-            </tr>
-          </thead>
+      <div class="column is-full box">
+        <div class="table-container">
+          <table class="table is-fullwidth" v-if="cartTotalLength">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <CartItem
-              v-for="item in cart.items"
-              v-bind:key="item.product.id"
-              v-bind:initialItem="item"
-              v-on:removeFromCart="removeFromCart"
-            />
-          </tbody>
-        </table>
-
-        <p v-else>You don't have any products in your cart...</p>
+            <tbody>
+              <CartItem
+                v-for="item in cart.items"
+                v-bind:key="item.product.id"
+                v-bind:initialItem="item"
+                v-on:removeFromCart="removeFromCart"
+              />
+            </tbody>
+          </table>
+          <p v-else>You don't have any products in your cart...</p>
+        </div>
       </div>
 
       <div class="column is-12 box" v-if="cartTotalLength">
@@ -45,7 +46,7 @@
           >Proceed to checkout</router-link
         >
         <router-link v-else to="/login" class="button is-dark"
-          >Proceed to checkout</router-link
+          >Log in to proceed</router-link
         >
       </div>
     </div>
@@ -92,3 +93,5 @@ export default {
   },
 };
 </script>
+<style scope>
+</style>
