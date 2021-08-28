@@ -2,7 +2,7 @@
 
 ## Demo
 
-https://socials-2bccb.web.app/
+https://ecom-web-d16ae.web.app/
 
 ## Screenshot
 
@@ -42,7 +42,7 @@ Start the server
 npm run serve
 ```
 
-Note: You also need to setup the [backend server](https://github.com/SrijanDas/socials-api)
+Note: You also need to setup the [backend server](https://github.com/SrijanDas/ecom-website-api)
 
 That's it👍
 
